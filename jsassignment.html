@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./bootstrap.min.css">
+  </head>
+<style>
+.h2{
+  text-shadow: 2px 2px 5px rgb(0, 174, 255);
+}
+.btn-purple{
+    background-color: rgb(41, 24, 24);
+    color:rgba(180, 11, 11, 0.884);
+}
+.btn-purple:hover{
+    background-color: #87a02d;
+    color:aliceblue;
+}
+
+</style>
+  <body>
+    <nav
+      class="navbar navbar-expand-sm navbar-dark"
+      style="background-color:grey;"
+    >
+      <a class="navbar-brand" href="#"><b><h2><marquee behavior="scroll" direction="centre">Registration Page</marquee><h2></b></a>
+    </nav>
+    <div class="jumbotron">
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="h2"><u>Registration Form<u></h2>
+        </div>
+      </div>
+    </div>
+    <div class="container shadow p-4 border">
+      <form id="myform">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label >First Name</label >
+                  <input type="text" name="firstName" id="firstName" class="form-control" required/>
+                  <div class="valid-feedback"> Looks good!</div>
+                  <div class="invalid-feedback">First Name cannot be left blank!</div>
+                </div>
+
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" name="lastName" id="lastName" class="form-control" required/>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">Last Name can't be blank!</div>
+                </div>
+                <div class="form-group">
+                  <label>Father Name</label>
+                  <input type="text" name="fatherName" id="fatherName" class="form-control" required/>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">Father's Name can't be blank!</div>
+                </div>
+                <div class="form-group">
+                  <label>Date of Birth</label>
+                  <input type="date" class="form-control" name="DOB" id="DOB" required onchange="checkDOB()"/>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">Date of birth can't be blank!</div>
+                </div>
+
+                <div class="form-check-inline form-group">
+                  <label>Gender</label>
+                  <input type="radio" class="form-check-input ml-2" name="gender" value="Male" required/>
+                    <label class="form-check-label">Male</label>
+                  <input type="radio" class="form-check-input ml-2" name="gender" value="Female" required/>
+                  <label class="form-check-label">Female</label>
+                  <input type="radio"class="form-check-input ml-2" name="gender" value="Other" required/>
+                  <label class="form-check-label">Other</label>
+
+                  <div class="pl-4 valid-feedback">Looks good!</div>
+
+                  <div class="pl-4 invalid-feedback">Please select anyone</div>
+                </div>
+                <div class="form-group">
+                  <label>Mobile Number (10 digits required)</label>
+                  <input type="text" name="mobile" id="mobileNumber" class="form-control" required pattern="[6-9]{1}[0-9]{9}"maxlength="10"/>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">Mobile number can't be blank .<br />Enter Numbers only</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" id="email" class="form-control" required onkeyup="emailCompare()"/>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">Email can't be blank or check format</div>
+                </div>
+                <div class="form-group">
+                  <label>Re-Enter Email</label>
+                  <input type="email" name="AgainEmail" id="AgainEmail" class="form-control" required onkeypress="ValidateEmail()"onkeyup="emailCompare()"/>
+                  <div id="emailCom"></div>
+                </div>
+
+                <div class="form-group">
+                  <label>Session</label>
+                  <select class="form-control" name="session" id="session" required>
+                    <option value="">None</option>
+                    <option>2015-2016</option>
+                    <option>2016-2017</option>
+                    <option>2017-2018</option>
+                    <option>2018-2019</option>
+                    <option>2019-2020</option>
+                  </select>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <div class="invalid-feedback">Please choose anyone</div>
+                </div>
+                <div class="form-group">
+                  <label>Department</label>
+                  <select class="form-control" name="department" id="department" data-target="Course" required >
+                    <option value="">--Select Anyone Department--</option>
+                    <option data-ref="cse">School of Computer Science And Engineering</option>
+                    <option data-ref="cap">School of Computer Applications</option>
+                    <option data-ref="bus">Mittal School of Business</option>
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">Please choose anyone</div>
+                </div>
+                <div class="form-group">
+                  <label>Course</label>
+                  <select class="form-control" name="course"id="course" required>
+                    <option value="">--Select Anyone Course--</option>
+                   
+                  </select>
+                  <div class="valid-feedback">Looks good!</div>
+                  <div class="invalid-feedback">please choose anyone</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <button type="submit" id="btnSubmit" class="btn btn-purple" >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+    <div class="container mt-5" style="height: 400px;">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+          <h2 class="h2">Output</h2>
+          <div class="table-responsive">
+ <table class="table table table-hover table-bordered" id="tblData">
+            <tr style="background-color:  grey;color:aliceblue">
+              <td>First Name</td>
+              <td>Last Name</td>
+              <td>Father Name</td>
+              <td>Date Of Birth</td>
+              <td>Gender</td>
+              <td>Email</td>
+              <td>Mobile</td>
+              <td>Session</td>
+              <td>Department</td>
+              <td>Course</td>
+            </tr>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      
+    ></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./bootstrapValidation.js"></script>
+    <script src="./cascadingDropdown.js"></script>
+    <script src="./selectFilter.min.js"></script>
+    <script>
+      function emailCompare() {
+        if ($("#AgainEmail").val() != $("#email").val()) {
+          $("#emailCom").css("color", "red");
+          $("#emailCom").text("Email doesn't match");
+
+          $("#btnSubmit").attr("disabled", true);
+        } else {
+          $("#emailCom").text("Matched");
+          $("#emailCom").css("color", "green");
+          $("#btnSubmit").attr("disabled", false);
+        }
+      }
+      function checkDOB() {
+        var dateString = document.getElementById("DOB").value;
+        var myDate = new Date(dateString);
+        var today = new Date();
+        if (myDate > today) {
+          alert("Date cannot be in future");
+          $("#DOB").val("");
+        }
+      }
+    </script>
+  </body>
+</html>
